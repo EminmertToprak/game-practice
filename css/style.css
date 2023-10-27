@@ -1,0 +1,34 @@
+body {
+    background-color: white;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    flex: content;
+}
+
+#road1 {
+    background-color: darkblue;
+    width: 100vw;
+    height: 50vh;
+}
+
+#road2 {
+    background-color: darkgreen;
+    width: 100vw;
+    height: 50vh;
+}
+
+#player {
+    background-color: greenyellow;
+    position: absolute;
+}
+
+.hostileR {
+    background-color: orange;
+    position: absolute;
+}
+
+.hostileL {
+    background-color: red;
+    position: absolute;
+}
