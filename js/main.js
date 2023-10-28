@@ -10,7 +10,7 @@ setInterval(() => {
 	const newhostileL = new hostileL();
 	hostileRArray.push(newhostileR);
 	hostileLArray.push(newhostileL);
-}, 1000);
+}, 5000);
 
 //appearance of Hostiles
 setInterval(() => {
@@ -45,8 +45,11 @@ setInterval(() => {
 		) {
 			location.href = './game-over-page.html';
 		}
+		if (player.positionY === 94) {
+			location.href = './win-page.html';
+		}
 	});
-}, 500);
+}, 100);
 
 document.addEventListener('keydown', (e) => {
 	switch (e.code) {

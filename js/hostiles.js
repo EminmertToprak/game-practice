@@ -1,9 +1,9 @@
 class hostileR {
 	constructor() {
-		this.height = 8;
-		this.width = 12;
-		this.positionX = 0;
-		this.positionY = Math.floor(Math.random() * 100);
+		this.height = 5;
+		this.width = 6;
+		this.positionX = 0 - this.width;
+		this.positionY = Math.floor(Math.random() * 50 - this.height / 2);
 		this.newhostileR = undefined;
 
 		this.createDomElement();
@@ -27,10 +27,10 @@ class hostileR {
 
 class hostileL {
 	constructor() {
-		this.height = 6;
-		this.width = 10;
+		this.height = 3;
+		this.width = 4;
 		this.positionX = 100;
-		this.positionY = Math.floor(Math.random() * 100);
+		this.positionY = Math.floor(Math.random() * (100 - 50 + 1) + 50);
 		this.newhostileR = undefined;
 
 		this.createDomElement();
@@ -43,7 +43,7 @@ class hostileL {
 		this.newhostileL.style.left = this.positionX + 'vw';
 		this.newhostileL.style.bottom = this.positionY + 'vh';
 
-		const parentElm = document.getElementById('road1');
+		const parentElm = document.getElementById('road2');
 		parentElm.appendChild(this.newhostileL);
 	}
 	moveLeft() {

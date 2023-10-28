@@ -1,9 +1,10 @@
 body {
-    background-color: white;
+    background-color: black;
     overflow: hidden;
     width: 100vw;
     height: 100vh;
     flex: content;
+    color: green;
 }
 
 #road1 {
@@ -31,4 +32,20 @@ body {
 .hostileL {
     background-color: red;
     position: absolute;
+}
+
+button {
+    background-color: yellowgreen;
+    text-decoration: none;
+    align-items: center;
+}
+
+button a{
+    text-decoration: none;
+    color: white;
+    
+}
+
+.play-again-button {
+    text-align: center;
 }
