@@ -3,6 +3,8 @@ console.log('JS Loaded');
 const player = new Player();
 const hostileRArray = [];
 const hostileLArray = [];
+const pointArray = [];
+let bonusPoints = 0;
 
 //create Hostiles
 setInterval(() => {
@@ -12,7 +14,7 @@ setInterval(() => {
 	hostileLArray.push(newhostileL);
 }, 5000);
 
-//appearance of Hostiles
+//movement + disappearance of Hostiles + game over
 setInterval(() => {
 	hostileRArray.forEach((hostileRInstance) => {
 		hostileRInstance.moveRight();
@@ -47,6 +49,30 @@ setInterval(() => {
 		}
 		if (player.positionY === 94) {
 			location.href = './win-page.html';
+		}
+	});
+}, 100);
+
+//create points
+setInterval(() => {
+	const newPoint = new Point();
+	pointArray.push(newPoint);
+}, 5000);
+
+//appearance + disappearance of points
+setInterval(() => {
+	pointArray.forEach((pointInstance, i) => {
+		if (
+			player.positionX < pointInstance.positionX + pointInstance.width &&
+			player.positionX + player.width > pointInstance.positionX &&
+			player.positionY < pointInstance.positionY + pointInstance.height &&
+			player.positionY + player.height > pointInstance.positionY
+		) {
+			pointInstance.newPoint.remove();
+			pointArray.splice(i, 1);
+			bonusPoints += 1;
+			const pointArea = document.getElementById('point-area');
+			pointArea.innerText = `Points: ${bonusPoints}`;
 		}
 	});
 }, 100);

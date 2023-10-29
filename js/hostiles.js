@@ -3,7 +3,7 @@ class hostileR {
 		this.height = 5;
 		this.width = 6;
 		this.positionX = 0 - this.width;
-		this.positionY = Math.floor(Math.random() * 50 - this.height / 2);
+		this.positionY = Math.floor(Math.random() * 50 - this.height);
 		this.newhostileR = undefined;
 
 		this.createDomElement();

@@ -46,6 +46,12 @@ Day 2:
 
 Day 3:
 
+- [x] Point system
 - [ ] Refactor code
-- [ ] Point system
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)
+
+Day 4:
+
+- [ ] Point objects moving
+- [ ] Hostiles switched to cars, boards are roads and cars in left lines are moving faster but smaller,trucks in right lines are bigger but slower
+- [ ] Add river new board as river, hostiles are crocodiles which you have jump on them, otherwise crocodiles eats player

@@ -7,6 +7,14 @@ body {
     color: green;
 }
 
+#point-area {
+    color: white;
+    position: absolute;
+    width: 100px;
+    height: 30px;
+    font-family: 'Common Pixel', sans-serif;
+}
+
 #road1 {
     background-color: darkblue;
     width: 100vw;
@@ -48,4 +56,9 @@ button a{
 
 .play-again-button {
     text-align: center;
+}
+
+.point {
+    background-color: aqua;
+    position: absolute;
 }
