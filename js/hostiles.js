@@ -1,9 +1,9 @@
 class hostileR {
 	constructor() {
-		this.height = 5;
-		this.width = 6;
-		this.positionX = 0 - this.width;
-		this.positionY = Math.floor(Math.random() * 50 - this.height);
+		this.height = 15;
+		this.width = 18;
+		this.positionX = -20;
+		this.positionY = Math.floor(Math.random() * (23 - 1) + 1);
 		this.newhostileR = undefined;
 
 		this.createDomElement();
@@ -27,10 +27,10 @@ class hostileR {
 
 class hostileL {
 	constructor() {
-		this.height = 3;
-		this.width = 4;
+		this.height = 13;
+		this.width = 15;
 		this.positionX = 100;
-		this.positionY = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+		this.positionY = Math.floor(Math.random() * (55 - 33) + 33);
 		this.newhostileR = undefined;
 
 		this.createDomElement();
