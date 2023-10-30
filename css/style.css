@@ -18,7 +18,7 @@ body {
 #river {
     background-image: url("../images/lake.png");
     background-repeat:repeat;
-    background-size: 20%;
+    background-size: contain;
     width: 100vw;
     height: 33vh;
     flex: content;
@@ -54,17 +54,18 @@ body {
     position: absolute;
 }
 
-.hostileR {
+.Truck {
     background-image: url("../images/truck-yellow.png");
-    background-size: 100%;
+    background-size: cover;
+    position: center;
     background-repeat: no-repeat;
     position: absolute;
-    padding: 0;
 }
 
-.hostileL {
+.Car {
     background-image: url("../images/car-red.png");
-    background-size: 100%;
+    background-size: cover;
+    position: center;
     background-repeat: no-repeat;
     position: absolute;
 }

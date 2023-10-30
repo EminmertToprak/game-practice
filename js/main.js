@@ -1,6 +1,6 @@
 const player = new Player();
-const hostileRArray = [];
-const hostileLArray = [];
+const TruckArray = [];
+const CarArray = [];
 const logFromLeftArray = [];
 const logFromRightArray = [];
 const pointArray = [];
@@ -12,7 +12,7 @@ setInterval(() => {
 	const newLogFromRight = new LogFromRight();
 	logFromLeftArray.push(newLogFromLeft);
 	logFromRightArray.push(newLogFromRight);
-}, 4000);
+}, 5000);
 
 //movement + disappearance of Logs
 setInterval(() => {
@@ -26,7 +26,7 @@ setInterval(() => {
 	logFromRightArray.forEach((logFromRightInstance) => {
 		logFromRightInstance.moveLeft();
 
-		if (logFromRightInstance.positionX < 0 - logFromRightArray.width) {
+		if (logFromRightInstance.positionX < 0 - logFromRightInstance.width) {
 			logFromRightInstance.newLogFromRight.remove();
 			logFromRightArray.shift();
 		}
@@ -35,41 +35,41 @@ setInterval(() => {
 
 //create Hostiles
 setInterval(() => {
-	const newhostileR = new hostileR();
-	const newhostileL = new hostileL();
-	hostileRArray.push(newhostileR);
-	hostileLArray.push(newhostileL);
-}, 1000);
+	const newTruck = new Truck();
+	const newCar = new Car();
+	TruckArray.push(newTruck);
+	CarArray.push(newCar);
+}, 4000);
 //movement + disappearance of Hostiles + game over
 setInterval(() => {
-	hostileRArray.forEach((hostileRInstance) => {
-		hostileRInstance.moveRight();
+	TruckArray.forEach((TruckInstance) => {
+		TruckInstance.moveRight();
 		//remove hostile Right
-		if (hostileRInstance.positionX > 100) {
-			hostileRInstance.newhostileR.remove();
-			hostileRArray.shift();
+		if (TruckInstance.positionX > 100) {
+			TruckInstance.newTruck.remove();
+			TruckArray.shift();
 		}
 		if (
-			player.positionX < hostileRInstance.positionX + hostileRInstance.width &&
-			player.positionX + player.width > hostileRInstance.positionX &&
-			player.positionY < hostileRInstance.positionY + hostileRInstance.height &&
-			player.positionY + player.height > hostileRInstance.positionY
+			player.positionX < TruckInstance.positionX + TruckInstance.width &&
+			player.positionX + player.width > TruckInstance.positionX &&
+			player.positionY < TruckInstance.positionY + TruckInstance.height &&
+			player.positionY + player.height > TruckInstance.positionY
 		) {
-			//location.href = './game-over-page.html';
+			location.href = './game-over-page.html';
 		}
 	});
-	hostileLArray.forEach((hostileLInstance) => {
-		hostileLInstance.moveLeft();
+	CarArray.forEach((CarInstance) => {
+		CarInstance.moveLeft();
 		//remove hostile Left
-		if (hostileLInstance.positionX < 0 - hostileLInstance.width) {
-			hostileLInstance.newhostileL.remove();
-			hostileLArray.shift();
+		if (CarInstance.positionX < 0 - CarInstance.width) {
+			CarInstance.newCar.remove();
+			CarArray.shift();
 		}
 		if (
-			player.positionX < hostileLInstance.positionX + hostileLInstance.width &&
-			player.positionX + player.width > hostileLInstance.positionX &&
-			player.positionY < hostileLInstance.positionY + hostileLInstance.height &&
-			player.positionY + player.height > hostileLInstance.positionY
+			player.positionX < CarInstance.positionX + CarInstance.width &&
+			player.positionX + player.width > CarInstance.positionX &&
+			player.positionY < CarInstance.positionY + CarInstance.height &&
+			player.positionY + player.height > CarInstance.positionY
 		) {
 			location.href = './game-over-page.html';
 		}
@@ -77,13 +77,13 @@ setInterval(() => {
 			location.href = './win-page.html';
 		}
 	});
-}, 25);
+}, 50);
 
 //create points
 setInterval(() => {
 	const newPoint = new Point();
 	pointArray.push(newPoint);
-}, 5000);
+}, 4000);
 
 //appearance + disappearance of points
 setInterval(() => {

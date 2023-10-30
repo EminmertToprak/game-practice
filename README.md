@@ -50,8 +50,12 @@ Day 3:
 
 Day 4:
 
-- [ ] Point objects moving
+- [x] Point objects moving
+- [x] Add backgrounds for objects and boards.
+- [x] Point objects moving randomly
+- [x] Add logs to the river
+- [ ] Random Images for objects
+- [ ] River is collision and logs are safe zones.
 - [ ] Refactor code
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)
-- [ ] Hostiles switched to cars, boards are roads and cars in left lines are moving faster but smaller,trucks in right lines are bigger but slower
-- [ ] Add river new board as river, hostiles are crocodiles which you have jump on them, otherwise crocodiles eats player
+- [ ] Cars and trucks have dedicated lines
