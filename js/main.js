@@ -55,7 +55,7 @@ setInterval(() => {
 			player.positionY < hostileRInstance.positionY + hostileRInstance.height &&
 			player.positionY + player.height > hostileRInstance.positionY
 		) {
-			//location.href = './game-over-page.html';
+			location.href = './game-over-page.html';
 		}
 	});
 	hostileLArray.forEach((hostileLInstance) => {
