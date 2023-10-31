@@ -1,9 +1,9 @@
 class LogFromLeft {
-	constructor() {
-		this.height = 15;
+	constructor(positionY) {
+		this.height = 4;
 		this.width = 20;
 		this.positionX = 0 - this.width;
-		this.positionY = Math.floor(Math.random() * (84 - 75) + 75);
+		this.positionY = positionY;
 		this.newLogFromLeft = undefined;
 		this.createDomElement();
 	}
@@ -25,11 +25,11 @@ class LogFromLeft {
 }
 
 class LogFromRight {
-	constructor() {
-		this.height = 15;
+	constructor(positionY) {
+		this.height = 4;
 		this.width = 20;
 		this.positionX = 100 + this.width;
-		this.positionY = Math.floor(Math.random() * (75 - 60) + 60);
+		this.positionY = positionY;
 		this.newLogFromRight = undefined;
 		this.createDomElement();
 	}

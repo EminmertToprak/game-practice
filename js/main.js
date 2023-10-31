@@ -7,20 +7,38 @@ const pointArray = [];
 let bonusPoints = 0;
 
 //create Logs
-setInterval(() => {
-	const newLogFromLeft = new LogFromLeft();
-	const newLogFromRight = new LogFromRight();
-	logFromLeftArray.push(newLogFromLeft);
-	logFromRightArray.push(newLogFromRight);
-}, 5000);
 
-//movement + disappearance of Logs
+setInterval(() => {
+	let x = 67;
+	const newLogFromLeft = new LogFromLeft(x);
+	const newLogFromRight = new LogFromRight(x + 4);
+	const newLogFromLeft2 = new LogFromLeft(x + 8);
+	const newLogFromRight2 = new LogFromRight(x + 12);
+	const newLogFromLeft3 = new LogFromLeft(x + 16);
+	logFromLeftArray.push(newLogFromLeft, newLogFromLeft2, newLogFromLeft3);
+	logFromRightArray.push(newLogFromRight, newLogFromRight2);
+}, 4000);
+
+//movement + disappearance of Logs + frog stucks to logs
 setInterval(() => {
 	logFromLeftArray.forEach((logFromLeftInstance) => {
 		logFromLeftInstance.moveRight();
 		if (logFromLeftInstance.positionX > 100) {
 			logFromLeftInstance.newLogFromLeft.remove();
 			logFromLeftArray.shift();
+		}
+		if (
+			player.positionX <
+				logFromLeftInstance.positionX +
+					logFromLeftInstance.width -
+					player.width &&
+			player.positionX + player.width >
+				logFromLeftInstance.positionX + player.width / 2 &&
+			player.positionY + player.height / 1.5 <
+				logFromLeftInstance.positionY + logFromLeftInstance.height &&
+			player.positionY + player.height / 1.5 > logFromLeftInstance.positionY
+		) {
+			player.moveRightOnLog();
 		}
 	});
 	logFromRightArray.forEach((logFromRightInstance) => {
@@ -30,7 +48,43 @@ setInterval(() => {
 			logFromRightInstance.newLogFromRight.remove();
 			logFromRightArray.shift();
 		}
+		if (
+			player.positionX <
+				logFromRightInstance.positionX +
+					logFromRightInstance.width -
+					player.width &&
+			player.positionX + player.width >
+				logFromRightInstance.positionX + player.width / 2 &&
+			player.positionY + player.height / 1.5 <
+				logFromRightInstance.positionY + logFromRightInstance.height &&
+			player.positionY + player.height / 1.5 > logFromRightInstance.positionY
+		) {
+			player.moveLeftOnLog();
+		}
 	});
+	// if (
+	// 	player.positionY > 63 &&
+	// 	player.positionX >
+	// 		logFromRightInstance.positionX +
+	// 			logFromRightInstance.width -
+	// 			player.width &&
+	// 	player.positionX + player.width <
+	// 		logFromRightInstance.positionX + player.width / 2 &&
+	// 	player.positionY + player.height / 1.5 >
+	// 		logFromRightInstance.positionY + logFromRightInstance.height &&
+	// 	player.positionY + player.height / 1.5 < logFromRightInstance.positionY &&
+	// 	player.positionX >
+	// 		logFromLeftInstance.positionX +
+	// 			logFromLeftInstance.width -
+	// 			player.width &&
+	// 	player.positionX + player.width <
+	// 		logFromLeftInstance.positionX + player.width / 2 &&
+	// 	player.positionY + player.height / 1.5 >
+	// 		logFromLeftInstance.positionY + logFromLeftInstance.height &&
+	// 	player.positionY + player.height / 1.5 < logFromLeftInstance.positionY
+	// ) {
+	// 	location.href = './game-over-page.html';
+	// }
 }, 100);
 
 //create Hostiles
@@ -76,6 +130,12 @@ setInterval(() => {
 		if (player.positionY === 94) {
 			location.href = './win-page.html';
 		}
+		if (
+			(player.positionX === 0) & (player.positionY > 63) ||
+			(player.positionX === 97) & (player.positionY > 63)
+		) {
+			location.href = './game-over-page.html';
+		}
 	});
 }, 50);
 
@@ -83,7 +143,7 @@ setInterval(() => {
 setInterval(() => {
 	const newPoint = new Point();
 	pointArray.push(newPoint);
-}, 4000);
+}, 5_000);
 
 //appearance + disappearance of points
 setInterval(() => {
@@ -96,7 +156,7 @@ setInterval(() => {
 			pointInstance.positionY > 100 + pointInstance.height
 		) {
 			pointInstance.newPoint.remove();
-			pointArray.shift();
+			pointArray.splice(i, 1);
 		}
 		if (
 			player.positionX < pointInstance.positionX + pointInstance.width &&

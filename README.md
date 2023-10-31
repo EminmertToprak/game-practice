@@ -54,8 +54,21 @@ Day 4:
 - [x] Add backgrounds for objects and boards.
 - [x] Point objects moving randomly
 - [x] Add logs to the river
-- [ ] Random Images for objects
+- [x] Cars and trucks have dedicated lines
+
+Day 5:
+
+- [x] Frog is stuck with logs and it's on top of them
+- [x] If frog stays on log while it hits border, game over.
 - [ ] River is collision and logs are safe zones.
+- [ ] Fix flies stucking in screen after a while
+- [ ] 5 finish points and 1 win condition appears randomly in one of them.
+
+Day 6:
+
+- [ ] Frog jumps instead of walks 1 pixel
+- [ ] When moving, frog image changes
+- [ ] Random Images for objects
+- [ ] Welcome Page with instructions
 - [ ] Refactor code
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)
-- [ ] Cars and trucks have dedicated lines

@@ -3,7 +3,7 @@ class Point {
 		this.width = 2;
 		this.height = 2;
 		this.positionX = Math.floor(Math.random() * 100 - this.width);
-		this.positionY = Math.floor(Math.random() * 100 - this.height * 1);
+		this.positionY = Math.floor(Math.random() * 100 - this.height);
 		this.newPoint = undefined;
 		this.newPoint = document.createElement('div');
 		this.newPoint.classList.add('point');
