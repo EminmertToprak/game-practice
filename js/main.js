@@ -1,6 +1,6 @@
 const player = new Player();
-// const randomer = Math.floor(Math.random() * 100);
-// const goldenPoint = new GoldenPoint(randomer);
+const randomer = Math.floor(Math.random() * 100);
+const goldenPoint = new GoldenPoint(randomer);
 const TruckArray = [];
 const CarArray = [];
 const logFromLeftArray = [];
@@ -37,13 +37,36 @@ setInterval(() => {
 					player.width &&
 			player.positionX + player.width >
 				logFromLeftInstance.positionX + player.width / 2 &&
-			player.positionY + player.height / 1.5 < logFromLeftInstance + height &&
+			player.positionY + player.height / 1.5 <
+				logFromLeftInstance.positionY + logFromLeftInstance.height &&
 			player.positionY + player.height / 1.5 > logFromLeftInstance.positionY
+		) {
+			player.moveRightOnLog();
+		}
+	});
+}, 70);
+setInterval(() => {
+	logFromRightArray.forEach((logFromRightInstance, i) => {
+		logFromRightInstance.moveLeft();
+		if (logFromRightInstance.positionX < -30) {
+			logFromRightInstance.newLogFromRight.remove();
+			logFromRightArray.splice(i, 1);
+		}
+		if (
+			player.positionX <
+				logFromRightInstance.positionX +
+					logFromRightInstance.width -
+					player.width &&
+			player.positionX + player.width >
+				logFromRightInstance.positionX + player.width / 2 &&
+			player.positionY + player.height / 1.5 <
+				logFromRightInstance.positionY + logFromRightInstance.height &&
+			player.positionY + player.height / 1.5 > logFromRightInstance.positionY
 		) {
 			player.moveLeftOnLog();
 		}
 	});
-}, 50);
+}, 40);
 
 //create Cars
 setInterval(() => {
@@ -148,25 +171,26 @@ document.addEventListener('keydown', (e) => {
 	switch (e.code) {
 		case 'ArrowLeft':
 		case 'KeyA':
-			player.jumpEffect();
+			player.jumpEffect(`url('../images/frog_jump_W.png')`, 'W');
 			player.moveLeft();
+			player.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
 			break;
 		case 'KeyD':
 		case 'ArrowRight':
-			player.jumpEffect();
+			player.jumpEffect(`url('../images/frog_jump_E.png')`, 'E');
 			player.moveRight();
-			this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
+			player.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
 			break;
 		case 'KeyW':
 		case 'ArrowUp':
-			player.jumpEffect();
+			player.jumpEffect(`url('../images/frog_jump.png')`);
 			player.moveUp();
 			player.updateScaleY(1);
 
 			break;
 		case 'KeyS':
 		case 'ArrowDown':
-			player.jumpEffect();
+			player.jumpEffect(`url('../images/frog_jump.png')`);
 			player.moveDown();
 			player.updateScaleY(-1);
 			break;
