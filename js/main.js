@@ -1,4 +1,6 @@
 const player = new Player();
+// const randomer = Math.floor(Math.random() * 100);
+// const goldenPoint = new GoldenPoint(randomer);
 const TruckArray = [];
 const CarArray = [];
 const logFromLeftArray = [];
@@ -15,17 +17,18 @@ setInterval(() => {
 	const newLogFromLeft2 = new LogFromLeft(x + 8);
 	const newLogFromRight2 = new LogFromRight(x + 12);
 	const newLogFromLeft3 = new LogFromLeft(x + 16);
+	const newLogFromRight3 = new LogFromRight(x + 20);
 	logFromLeftArray.push(newLogFromLeft, newLogFromLeft2, newLogFromLeft3);
-	logFromRightArray.push(newLogFromRight, newLogFromRight2);
+	logFromRightArray.push(newLogFromRight, newLogFromRight2, newLogFromRight3);
 }, 4000);
 
 //movement + disappearance of Logs + frog stucks to logs
 setInterval(() => {
-	logFromLeftArray.forEach((logFromLeftInstance) => {
+	logFromLeftArray.forEach((logFromLeftInstance, i) => {
 		logFromLeftInstance.moveRight();
 		if (logFromLeftInstance.positionX > 100) {
 			logFromLeftInstance.newLogFromLeft.remove();
-			logFromLeftArray.shift();
+			logFromLeftArray.splice(i, 1);
 		}
 		if (
 			player.positionX <
@@ -34,74 +37,40 @@ setInterval(() => {
 					player.width &&
 			player.positionX + player.width >
 				logFromLeftInstance.positionX + player.width / 2 &&
-			player.positionY + player.height / 1.5 <
-				logFromLeftInstance.positionY + logFromLeftInstance.height &&
+			player.positionY + player.height / 1.5 < logFromLeftInstance + height &&
 			player.positionY + player.height / 1.5 > logFromLeftInstance.positionY
-		) {
-			player.moveRightOnLog();
-		}
-	});
-	logFromRightArray.forEach((logFromRightInstance) => {
-		logFromRightInstance.moveLeft();
-
-		if (logFromRightInstance.positionX < 0 - logFromRightInstance.width) {
-			logFromRightInstance.newLogFromRight.remove();
-			logFromRightArray.shift();
-		}
-		if (
-			player.positionX <
-				logFromRightInstance.positionX +
-					logFromRightInstance.width -
-					player.width &&
-			player.positionX + player.width >
-				logFromRightInstance.positionX + player.width / 2 &&
-			player.positionY + player.height / 1.5 <
-				logFromRightInstance.positionY + logFromRightInstance.height &&
-			player.positionY + player.height / 1.5 > logFromRightInstance.positionY
 		) {
 			player.moveLeftOnLog();
 		}
 	});
-	// if (
-	// 	player.positionY > 63 &&
-	// 	player.positionX >
-	// 		logFromRightInstance.positionX +
-	// 			logFromRightInstance.width -
-	// 			player.width &&
-	// 	player.positionX + player.width <
-	// 		logFromRightInstance.positionX + player.width / 2 &&
-	// 	player.positionY + player.height / 1.5 >
-	// 		logFromRightInstance.positionY + logFromRightInstance.height &&
-	// 	player.positionY + player.height / 1.5 < logFromRightInstance.positionY &&
-	// 	player.positionX >
-	// 		logFromLeftInstance.positionX +
-	// 			logFromLeftInstance.width -
-	// 			player.width &&
-	// 	player.positionX + player.width <
-	// 		logFromLeftInstance.positionX + player.width / 2 &&
-	// 	player.positionY + player.height / 1.5 >
-	// 		logFromLeftInstance.positionY + logFromLeftInstance.height &&
-	// 	player.positionY + player.height / 1.5 < logFromLeftInstance.positionY
-	// ) {
-	// 	location.href = './game-over-page.html';
-	// }
-}, 100);
+}, 50);
 
-//create Hostiles
+//create Cars
 setInterval(() => {
-	const newTruck = new Truck();
-	const newCar = new Car();
-	TruckArray.push(newTruck);
-	CarArray.push(newCar);
+	let newTruckRandomer = Math.floor(Math.random() * (11 - 1) + 1);
+	let newTruckRandomer2 = Math.floor(Math.random() * (59 - 47) + 47);
+	let newCarRandomer = Math.floor(Math.random() * (46 - 35) + 35);
+	let newCarRandomer2 = Math.floor(Math.random() * (33 - 12) + 12);
+	const newTruck = new Truck(-24, 8, -1);
+	const newTruck2 = new Truck(124, 54, 1);
+	const newCar = new Car(100, 37, 1);
+	const newCar2 = new Car(-13, 18, -1);
+	TruckArray.push(newTruck, newTruck2);
+	CarArray.push(newCar, newCar2);
 }, 4000);
-//movement + disappearance of Hostiles + game over
+//movement + disappearance of Trucks + game over
 setInterval(() => {
-	TruckArray.forEach((TruckInstance) => {
-		TruckInstance.moveRight();
-		//remove hostile Right
-		if (TruckInstance.positionX > 100) {
+	TruckArray.forEach((TruckInstance, i) => {
+		if (TruckInstance.spawnSide === -1) {
+			TruckInstance.moveRight();
+		} else if (TruckInstance.spawnSide === 1) {
+			TruckInstance.updateScaleX(-1);
+			TruckInstance.moveLeft();
+		}
+		//remove Trucks
+		if (TruckInstance.positionX === 140 || TruckInstance.positionX === -140) {
 			TruckInstance.newTruck.remove();
-			TruckArray.shift();
+			TruckArray.splice(i, 1);
 		}
 		if (
 			player.positionX < TruckInstance.positionX + TruckInstance.width &&
@@ -112,12 +81,17 @@ setInterval(() => {
 			location.href = './game-over-page.html';
 		}
 	});
-	CarArray.forEach((CarInstance) => {
-		CarInstance.moveLeft();
-		//remove hostile Left
-		if (CarInstance.positionX < 0 - CarInstance.width) {
+	CarArray.forEach((CarInstance, i) => {
+		if (CarInstance.spawnSide === -1) {
+			CarInstance.updateScaleX(-1);
+			CarInstance.moveRight();
+		} else if (CarInstance.spawnSide === 1) {
+			CarInstance.moveLeft();
+		}
+		//remove Cars Left
+		if (CarInstance.positionX === 140 || CarInstance.positionX === -140) {
 			CarInstance.newCar.remove();
-			CarArray.shift();
+			CarArray.splice(i, 1);
 		}
 		if (
 			player.positionX < CarInstance.positionX + CarInstance.width &&
@@ -127,9 +101,6 @@ setInterval(() => {
 		) {
 			location.href = './game-over-page.html';
 		}
-		if (player.positionY === 94) {
-			location.href = './win-page.html';
-		}
 		if (
 			(player.positionX === 0) & (player.positionY > 63) ||
 			(player.positionX === 97) & (player.positionY > 63)
@@ -137,7 +108,7 @@ setInterval(() => {
 			location.href = './game-over-page.html';
 		}
 	});
-}, 50);
+}, 30);
 
 //create points
 setInterval(() => {
@@ -177,21 +148,38 @@ document.addEventListener('keydown', (e) => {
 	switch (e.code) {
 		case 'ArrowLeft':
 		case 'KeyA':
+			player.jumpEffect();
 			player.moveLeft();
 			break;
 		case 'KeyD':
 		case 'ArrowRight':
+			player.jumpEffect();
 			player.moveRight();
+			this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
 			break;
 		case 'KeyW':
 		case 'ArrowUp':
+			player.jumpEffect();
 			player.moveUp();
+			player.updateScaleY(1);
+
 			break;
 		case 'KeyS':
 		case 'ArrowDown':
+			player.jumpEffect();
 			player.moveDown();
+			player.updateScaleY(-1);
 			break;
 		default:
 			break;
 	}
 });
+
+if (
+	player.positionX < goldenPoint.positionX + goldenPoint.width &&
+	player.positionX + player.width > goldenPoint.positionX &&
+	player.positionY < goldenPoint.positionY + goldenPoint.height &&
+	player.positionY + player.height > goldenPoint.positionY
+) {
+	location.href = './win-page.html';
+}

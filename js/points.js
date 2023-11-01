@@ -40,3 +40,22 @@ class Point {
 		}
 	}
 }
+
+class GoldenPoint {
+	constructor(positionX) {
+		this.width = 3;
+		this.height = 3;
+		this.positionX = positionX;
+		this.positionY = 91;
+		this.newGoldenPoint = undefined;
+		this.newGoldenPoint = document.createElement('div');
+		this.newGoldenPoint.classList.add('golden_point');
+		this.newGoldenPoint.style.width = this.width + 'vw';
+		this.newGoldenPoint.style.height = this.height + 'vh';
+		this.newGoldenPoint.style.left = this.positionX + 'vw';
+		this.newGoldenPoint.style.bottom = this.positionY + 'vh';
+
+		const parentElm = document.getElementById('lilypads');
+		parentElm.appendChild(this.newGoldenPoint);
+	}
+}

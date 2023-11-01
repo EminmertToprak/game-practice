@@ -1,6 +1,6 @@
 class Player {
-	constructor() {
-		this.height = 6;
+	constructor(height, width) {
+		this.height = 3;
 		this.width = 3;
 		this.positionX = 50;
 		this.positionY = 0;
@@ -9,26 +9,57 @@ class Player {
 		this.playerElement.style.height = this.height + 'vh';
 		this.playerElement.style.bottom = this.positionY + 'vh';
 		this.playerElement.style.left = this.positionX + 'vw';
-		//couldn't figured it out perfect
+		this.updateScaleX();
+		this.updateScaleY();
+		this.standingEffect();
 	}
+	updateScaleX(num) {
+		this.playerElement.style.transform = `scaleX(${num})`;
+	}
+
+	updateScaleY(num) {
+		this.playerElement.style.transform = `scaleY(${num})`;
+	}
+
+	jumpEffect() {
+		// this.width = 3;
+		// this.height = 5;
+		// this.playerElement.style.width = this.width;
+		// this.playerElement.style.height = this.height;
+		this.playerElement.style.backgroundImage = `url('../images/frog_jump.png')`;
+		setInterval(() => {
+			player.standingEffect();
+		}, 600);
+	}
+
+	standingEffect() {
+		// this.width = 3;
+		// this.height = 3;
+		// this.playerElement.style.width = this.width;
+		// this.playerElement.style.height = this.height;
+		setTimeout(() => {
+			this.playerElement.style.backgroundImage = `url('../images/frog_N.png')`;
+		}, 500);
+	}
+
 	moveLeft() {
 		if (this.positionX > 0) {
 			this.positionX -= 1;
 			this.playerElement.style.left = this.positionX + 'vw';
+			// this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
 		}
 	}
 
 	moveRight() {
 		if (this.positionX < 97) {
-			// Why 97? Try to find a way to make it more interactive
 			this.positionX += 1;
 			this.playerElement.style.left = this.positionX + 'vw';
+			this.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
 		}
 	}
 
 	moveUp() {
 		if (this.positionY < 94) {
-			// Why 94? Try to find a way to make it more interactive
 			this.positionY += 1;
 			this.playerElement.style.bottom = this.positionY + 'vh';
 		}
@@ -43,7 +74,6 @@ class Player {
 
 	moveLeftOnLog() {
 		if (this.positionX < 97) {
-			// Why 97? Try to find a way to make it more interactive
 			this.positionX -= 1;
 			this.playerElement.style.left = this.positionX + 'vw';
 		}
@@ -51,7 +81,6 @@ class Player {
 
 	moveRightOnLog() {
 		if (this.positionX < 97) {
-			// Why 97? Try to find a way to make it more interactive
 			this.positionX += 1;
 			this.playerElement.style.left = this.positionX + 'vw';
 		}

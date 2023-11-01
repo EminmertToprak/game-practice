@@ -60,15 +60,22 @@ Day 5:
 
 - [x] Frog is stuck with logs and it's on top of them
 - [x] If frog stays on log while it hits border, game over.
-- [ ] River is collision and logs are safe zones.
-- [ ] Fix flies stucking in screen after a while
-- [ ] 5 finish points and 1 win condition appears randomly in one of them.
+- [x] Fix flies stucking in screen after a while
+- [x] Applied 5 lily pad elements
 
 Day 6:
 
-- [ ] Frog jumps instead of walks 1 pixel
-- [ ] When moving, frog image changes
-- [ ] Random Images for objects
-- [ ] Welcome Page with instructions
+- [x] Object images changes depending on the side they're appearing
+- [x] Objects coming from different sides and positions with same class
+- [x] When moving, frog image changes
+- [x] Welcome Page with instructions
+- [x] Golden Bug Appears.
+
+Day 7:
+
+- [ ] Fix log bug
+- [ ] Fix movement images better.
+- [ ] Win condition on Lily Pads
+- [ ] River is collision and logs are safe zones.
 - [ ] Refactor code
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)

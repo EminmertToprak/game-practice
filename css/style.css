@@ -8,6 +8,37 @@ body {
     position: relative;
 }
 
+#welcome_page {
+    position: relative;
+    flex: content;
+}
+
+#welcome_frog {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+
+#welcome_page h1 {
+    font-family: serif;
+    text-align: center;
+}
+
+#welcome_page ul {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0%;
+}
+
+#welcome_page ul li {
+    text-decoration: none;
+    list-style: none;
+}
+    
+
 #point-area {
     color: white;
     position: absolute;
@@ -18,39 +49,26 @@ body {
 
 #river {
     background-image: url("../images/lake.png");
-    background-repeat:repeat;
+    background-repeat: repeat-x;
+    background-size: 40%;
+    width: 100vw;
+    height: 33vh;
+    flex: content;
+}
+
+#road {
+    background-image: url("../images/road-1.png");
+    background-repeat: no-repeat;
     background-size: contain;
     width: 100vw;
-    height: 33vh;
+    height: 67vh;
     flex: content;
-}
-
-#road1 {
-    background-image: url("../images/road-1.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-clip:padding-box;
-    background-position: 0%;
-    width: 100vw;
-    height: 33vh;
-    flex: content;
-}
-
-#road2 {
-    background-image: url("../images/road-1.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-clip:padding-box;
-    background-position: 0%;
-    width: 100vw;
-    height: 33vh;
-    flex: content
 }
 
 
 #player {
     background-image: url("../images/frog_N.png");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
 }
@@ -103,10 +121,17 @@ button a{
 
 .point {
     background-image: url("../images/bug_1.png");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
 
+}
+
+.golden_point {
+    background-image: url("../images/golden_bug_1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
 }
 
 .lilyPad1 {
@@ -114,7 +139,7 @@ button a{
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    top: 9vh;
+    top: 5vh;
     left: 16.6vw;
     width: 4vw;
     height: 4vh;
@@ -126,7 +151,7 @@ button a{
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    top: 9vh;    
+    top: 5vh;    
     left: 33.2vw;
     width: 4vw;
     height: 4vh;
@@ -138,7 +163,7 @@ button a{
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    top: 9vh;
+    top: 5vh;
     left: 49.8vw;
     width: 4vw;
     height: 4vh;
@@ -150,7 +175,7 @@ button a{
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    top: 9vh;
+    top: 5vh;
     left: 66.4vw;
     width: 4vw;
     height: 4vh;
@@ -162,7 +187,7 @@ button a{
     background-size: 100%;
     background-repeat: no-repeat;
     position: absolute;
-    top: 9vh;
+    top: 5vh;
     left: 83vw;
     width: 4vw;
     height: 4vh;
