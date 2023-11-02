@@ -22,22 +22,11 @@ class Player {
 	}
 
 	jumpEffect(imageUrl, direction) {
-		// this.width = 3;
-		// this.height = 5;
-		// this.playerElement.style.width = this.width;
-		// this.playerElement.style.height = this.height;
 		this.playerElement.style.backgroundImage = imageUrl;
-		//  setInterval(() => {
-		// }, 600);
-		// clearInterval()
 		this.standingEffect(direction);
 	}
 
 	standingEffect(direction) {
-		// this.width = 3;
-		// this.height = 3;
-		// this.playerElement.style.width = this.width;
-		// this.playerElement.style.height = this.height;
 		setTimeout(() => {
 			if (direction === 'W') {
 				this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
@@ -55,7 +44,6 @@ class Player {
 		if (this.positionX > 0) {
 			this.positionX -= 1;
 			this.playerElement.style.left = this.positionX + 'vw';
-			// this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
 		}
 	}
 
@@ -63,7 +51,6 @@ class Player {
 		if (this.positionX < 97) {
 			this.positionX += 1;
 			this.playerElement.style.left = this.positionX + 'vw';
-			// this.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
 		}
 	}
 
