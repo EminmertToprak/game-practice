@@ -36,8 +36,8 @@ function createLogsFromRight() {
 	logFromRightArray.push(newLogFromRight, newLogFromRight2, newLogFromRight3);
 }
 
-setInterval(createLogsFromLeft, 400);
-setInterval(createLogsFromRight, 300);
+setInterval(createLogsFromLeft, 500);
+setInterval(createLogsFromRight, 500);
 
 //movement + disappearance of Logs + frog stucks to logs
 setInterval(() => {
@@ -197,28 +197,31 @@ document.addEventListener('keydown', (e) => {
 	switch (e.code) {
 		case 'ArrowLeft':
 		case 'KeyA':
-			player.jumpEffect(`url('../images/frog_jump_W.png')`, 'W');
+			player.jumpEffect(`url('./images/frog_jump_W.png')`, 'W');
 			player.moveLeft();
-			player.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
+			player.playerElement.style.backgroundImage = `url('./images/frog_W.png')`;
 			break;
 		case 'KeyD':
 		case 'ArrowRight':
-			player.jumpEffect(`url('../images/frog_jump_E.png')`, 'E');
+			player.jumpEffect(`url('./images/frog_jump_E.png')`, 'E');
 			player.moveRight();
-			player.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
+			player.playerElement.style.backgroundImage = `url('./images/frog_E.png')`;
 			break;
 		case 'KeyW':
 		case 'ArrowUp':
-			player.jumpEffect(`url('../images/frog_jump.png')`);
+			player.jumpEffect(`url('./images/frog_jump.png')`);
 			player.moveUp();
 			player.updateScaleY(1);
 
 			break;
 		case 'KeyS':
 		case 'ArrowDown':
-			player.jumpEffect(`url('../images/frog_jump.png')`);
+			player.jumpEffect(`url('./images/frog_jump.png')`);
 			player.moveDown();
 			player.updateScaleY(-1);
+			break;
+		case 'KeyP':
+			location.href = './win-page.html';
 			break;
 		default:
 			break;
@@ -239,7 +242,7 @@ setInterval(() => {
 			goldenPointArray.shift();
 		}
 	});
-}, 3100);
+}, 10000);
 setInterval(() => {
 	if ((player.positionX < 1) & (player.positionY > 63)) {
 		location.href = './game-over-page.html';
