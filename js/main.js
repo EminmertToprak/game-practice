@@ -197,26 +197,26 @@ document.addEventListener('keydown', (e) => {
 	switch (e.code) {
 		case 'ArrowLeft':
 		case 'KeyA':
-			player.jumpEffect(`url('../images/frog_jump_W.png')`, 'W');
+			player.jumpEffect(`url('./images/frog_jump_W.png')`, 'W');
 			player.moveLeft();
 			player.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
 			break;
 		case 'KeyD':
 		case 'ArrowRight':
-			player.jumpEffect(`url('../images/frog_jump_E.png')`, 'E');
+			player.jumpEffect(`url('./images/frog_jump_E.png')`, 'E');
 			player.moveRight();
 			player.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
 			break;
 		case 'KeyW':
 		case 'ArrowUp':
-			player.jumpEffect(`url('../images/frog_jump.png')`);
+			player.jumpEffect(`url('./images/frog_jump.png')`);
 			player.moveUp();
 			player.updateScaleY(1);
 
 			break;
 		case 'KeyS':
 		case 'ArrowDown':
-			player.jumpEffect(`url('../images/frog_jump.png')`);
+			player.jumpEffect(`url('./images/frog_jump.png')`);
 			player.moveDown();
 			player.updateScaleY(-1);
 			break;
