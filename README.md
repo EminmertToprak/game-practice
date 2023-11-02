@@ -78,6 +78,7 @@ Day 7:
 - [x] Removed log feature, instead add stream
 - [x] Add loading screen until streams complete
 - [x] Change win condition to Max. Point.
+- [x] Fix river sides not game over bug.
 - [ ] Fix movement images better.
 
 Future:

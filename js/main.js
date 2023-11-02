@@ -148,12 +148,6 @@ function createCar() {
 		) {
 			location.href = './game-over-page.html';
 		}
-		if (
-			(player.positionX === 0) & (player.positionY > 63) ||
-			(player.positionX === 97) & (player.positionY > 63)
-		) {
-			location.href = './game-over-page.html';
-		}
 	});
 }
 
@@ -194,7 +188,7 @@ setInterval(() => {
 }, 100);
 
 setInterval(() => {
-	if (bonusPoints > 14) {
+	if (bonusPoints > 9) {
 		location.href = './win-page.html';
 	}
 }, 100);
@@ -247,6 +241,11 @@ setInterval(() => {
 	});
 }, 3100);
 setInterval(() => {
+	if ((player.positionX < 1) & (player.positionY > 63)) {
+		location.href = './game-over-page.html';
+	} else if ((player.positionX > 96) & (player.positionY > 63)) {
+		location.href = './game-over-page.html';
+	}
 	goldenPointArray.forEach((goldenPointInstance, i) => {
 		if (
 			player.positionX <
