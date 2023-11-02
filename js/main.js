@@ -111,7 +111,7 @@ function createTruck() {
 		}
 		//remove Trucks
 		if (TruckInstance.positionX === 140 || TruckInstance.positionX === -140) {
-			TruckInstance.newTruck.remove();
+			TruckInstance.newElement.remove();
 			TruckArray.splice(i, 1);
 		}
 		if (
@@ -137,7 +137,7 @@ function createCar() {
 		}
 		//remove Cars Left
 		if (CarInstance.positionX === 140 || CarInstance.positionX === -140) {
-			CarInstance.newCar.remove();
+			CarInstance.newElement.remove();
 			CarArray.splice(i, 1);
 		}
 		if (

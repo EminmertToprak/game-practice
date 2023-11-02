@@ -29,14 +29,14 @@ class Player {
 	standingEffect(direction) {
 		setTimeout(() => {
 			if (direction === 'W') {
-				this.playerElement.style.backgroundImage = `url('../images/frog_W.png')`;
+				this.playerElement.style.backgroundImage = `url('./images/frog_W.png')`;
 				return;
 			}
 			if (direction === 'E') {
-				this.playerElement.style.backgroundImage = `url('../images/frog_E.png')`;
+				this.playerElement.style.backgroundImage = `url('./images/frog_E.png')`;
 				return;
 			}
-			this.playerElement.style.backgroundImage = `url('../images/frog_N.png')`;
+			this.playerElement.style.backgroundImage = `url('./images/frog_N.png')`;
 		}, 1000);
 	}
 
