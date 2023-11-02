@@ -43,7 +43,7 @@ class Point {
 
 class GoldenPoint {
 	constructor(positionX) {
-		this.width = 3;
+		this.width = 4;
 		this.height = 3;
 		this.positionX = positionX;
 		this.positionY = 91;
@@ -55,7 +55,7 @@ class GoldenPoint {
 		this.newGoldenPoint.style.left = this.positionX + 'vw';
 		this.newGoldenPoint.style.bottom = this.positionY + 'vh';
 
-		const parentElm = document.getElementById('lilypads');
+		const parentElm = document.getElementById('board');
 		parentElm.appendChild(this.newGoldenPoint);
 	}
 }

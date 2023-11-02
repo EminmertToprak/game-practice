@@ -1,26 +1,43 @@
 const player = new Player();
-const randomer = Math.floor(Math.random() * 100);
-const goldenPoint = new GoldenPoint(randomer);
 const TruckArray = [];
 const CarArray = [];
 const logFromLeftArray = [];
 const logFromRightArray = [];
 const pointArray = [];
+const goldenPointArray = [];
 let bonusPoints = 0;
+
+createVehicle();
+createTruck();
+createLogsFromLeft();
+createLogsFromRight();
 
 //create Logs
 
-setInterval(() => {
+function createLogsFromLeft() {
 	let x = 67;
 	const newLogFromLeft = new LogFromLeft(x);
-	const newLogFromRight = new LogFromRight(x + 4);
 	const newLogFromLeft2 = new LogFromLeft(x + 8);
-	const newLogFromRight2 = new LogFromRight(x + 12);
 	const newLogFromLeft3 = new LogFromLeft(x + 16);
+	const newLogFromLeft4 = new LogFromLeft(x + 24);
+	logFromLeftArray.push(
+		newLogFromLeft,
+		newLogFromLeft2,
+		newLogFromLeft3,
+		newLogFromLeft4
+	);
+}
+
+function createLogsFromRight() {
+	let x = 67;
+	const newLogFromRight = new LogFromRight(x + 4);
+	const newLogFromRight2 = new LogFromRight(x + 12);
 	const newLogFromRight3 = new LogFromRight(x + 20);
-	logFromLeftArray.push(newLogFromLeft, newLogFromLeft2, newLogFromLeft3);
 	logFromRightArray.push(newLogFromRight, newLogFromRight2, newLogFromRight3);
-}, 4000);
+}
+
+setInterval(createLogsFromLeft, 400);
+setInterval(createLogsFromRight, 300);
 
 //movement + disappearance of Logs + frog stucks to logs
 setInterval(() => {
@@ -69,20 +86,22 @@ setInterval(() => {
 }, 40);
 
 //create Cars
-setInterval(() => {
+function createVehicle() {
 	let newTruckRandomer = Math.floor(Math.random() * (11 - 1) + 1);
 	let newTruckRandomer2 = Math.floor(Math.random() * (59 - 47) + 47);
 	let newCarRandomer = Math.floor(Math.random() * (46 - 35) + 35);
 	let newCarRandomer2 = Math.floor(Math.random() * (33 - 12) + 12);
-	const newTruck = new Truck(-24, 8, -1);
+	const newTruck = new Truck(-24, 5, -1);
 	const newTruck2 = new Truck(124, 54, 1);
 	const newCar = new Car(100, 37, 1);
-	const newCar2 = new Car(-13, 18, -1);
+	const newCar2 = new Car(-15, 20, -1);
 	TruckArray.push(newTruck, newTruck2);
 	CarArray.push(newCar, newCar2);
-}, 4000);
+}
+
+setInterval(createVehicle, 2000);
 //movement + disappearance of Trucks + game over
-setInterval(() => {
+function createTruck() {
 	TruckArray.forEach((TruckInstance, i) => {
 		if (TruckInstance.spawnSide === -1) {
 			TruckInstance.moveRight();
@@ -104,6 +123,11 @@ setInterval(() => {
 			location.href = './game-over-page.html';
 		}
 	});
+}
+
+setInterval(createTruck, 15);
+
+function createCar() {
 	CarArray.forEach((CarInstance, i) => {
 		if (CarInstance.spawnSide === -1) {
 			CarInstance.updateScaleX(-1);
@@ -131,15 +155,17 @@ setInterval(() => {
 			location.href = './game-over-page.html';
 		}
 	});
-}, 30);
+}
+
+setInterval(createCar, 10);
 
 //create points
 setInterval(() => {
 	const newPoint = new Point();
 	pointArray.push(newPoint);
-}, 5_000);
+}, 3_100);
 
-//appearance + disappearance of points
+//appearance + disappearance of points + win condition
 setInterval(() => {
 	pointArray.forEach((pointInstance, i) => {
 		pointInstance.moveRandom();
@@ -165,6 +191,12 @@ setInterval(() => {
 			pointArea.innerText = `Points: ${bonusPoints}`;
 		}
 	});
+}, 100);
+
+setInterval(() => {
+	if (bonusPoints > 14) {
+		location.href = './win-page.html';
+	}
 }, 100);
 
 document.addEventListener('keydown', (e) => {
@@ -199,11 +231,42 @@ document.addEventListener('keydown', (e) => {
 	}
 });
 
-if (
-	player.positionX < goldenPoint.positionX + goldenPoint.width &&
-	player.positionX + player.width > goldenPoint.positionX &&
-	player.positionY < goldenPoint.positionY + goldenPoint.height &&
-	player.positionY + player.height > goldenPoint.positionY
-) {
-	location.href = './win-page.html';
-}
+//goldenpoint
+setInterval(() => {
+	let positionArray = [6.5, 27.5, 48, 68.7, 89.4];
+	let position =
+		positionArray[Math.floor(Math.random() * positionArray.length)];
+
+	const newGoldenPoint = new GoldenPoint(position);
+	goldenPointArray.push(newGoldenPoint);
+	goldenPointArray.forEach((goldenPointInstance) => {
+		if (goldenPointArray.length >= 2) {
+			goldenPointInstance.newGoldenPoint.remove();
+			goldenPointArray.shift();
+		}
+	});
+}, 3100);
+setInterval(() => {
+	goldenPointArray.forEach((goldenPointInstance, i) => {
+		if (
+			player.positionX <
+				goldenPointInstance.positionX + goldenPointInstance.width &&
+			player.positionX + player.width > goldenPointInstance.positionX &&
+			player.positionY <
+				goldenPointInstance.positionY + goldenPointInstance.height &&
+			player.positionY + player.height > goldenPointInstance.positionY
+		) {
+			bonusPoints += 3;
+			const pointArea = document.getElementById('point-area');
+			pointArea.innerText = `Points: ${bonusPoints}`;
+			goldenPointInstance.newGoldenPoint.remove();
+			goldenPointArray.splice(i, 1);
+		}
+	});
+}, 100);
+
+//Loading Screen
+
+setTimeout(function () {
+	document.getElementById('loading').classList.add('hidden');
+}, 3000);

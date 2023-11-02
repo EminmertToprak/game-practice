@@ -73,9 +73,14 @@ Day 6:
 
 Day 7:
 
-- [ ] Fix log bug
+- [x] Fix log bug
+- [x] Win condition on Lily Pads
+- [x] Removed log feature, instead add stream
+- [x] Add loading screen until streams complete
+- [x] Change win condition to Max. Point.
 - [ ] Fix movement images better.
-- [ ] Win condition on Lily Pads
-- [ ] River is collision and logs are safe zones.
+
+Future:
+
 - [ ] Refactor code
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)

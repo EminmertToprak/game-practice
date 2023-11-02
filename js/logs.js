@@ -1,8 +1,8 @@
 class LogFromLeft {
 	constructor(positionY) {
 		this.height = 4;
-		this.width = 20;
-		this.positionX = 0 - this.width;
+		this.width = 100;
+		this.positionX = -5;
 		this.positionY = positionY;
 		this.newLogFromLeft = undefined;
 		this.createDomElement();
@@ -27,8 +27,8 @@ class LogFromLeft {
 class LogFromRight {
 	constructor(positionY) {
 		this.height = 4;
-		this.width = 20;
-		this.positionX = 100 + this.width;
+		this.width = 80;
+		this.positionX = 30;
 		this.positionY = positionY;
 		this.newLogFromRight = undefined;
 		this.createDomElement();

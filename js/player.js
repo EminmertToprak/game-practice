@@ -83,14 +83,14 @@ class Player {
 
 	moveLeftOnLog() {
 		if (this.positionX < 97) {
-			this.positionX -= 1;
+			this.positionX -= 0.2;
 			this.playerElement.style.left = this.positionX + 'vw';
 		}
 	}
 
 	moveRightOnLog() {
 		if (this.positionX < 97) {
-			this.positionX += 1;
+			this.positionX += 0.2;
 			this.playerElement.style.left = this.positionX + 'vw';
 		}
 	}
