@@ -71,7 +71,7 @@ setInterval(() => {
 setInterval(() => {
 	streamFromRightArray.forEach((streamFromRightInstance, i) => {
 		streamFromRightInstance.moveLeft();
-		if (streamFromRightInstance.positionX < -30) {
+		if (streamFromRightInstance.positionX < -40) {
 			streamFromRightInstance.newStreamFromRight.remove();
 			streamFromRightArray.splice(i, 1);
 		}

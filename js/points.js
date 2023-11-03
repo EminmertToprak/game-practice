@@ -1,6 +1,6 @@
 class Point {
 	constructor() {
-		this.width = 2;
+		this.width = 3;
 		this.height = 2;
 		this.positionX = Math.floor(Math.random() * 100 - this.width);
 		this.positionY = Math.floor(Math.random() * 100 - this.height);
