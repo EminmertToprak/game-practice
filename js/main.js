@@ -1,86 +1,92 @@
 const player = new Player();
 const TruckArray = [];
 const CarArray = [];
-const logFromLeftArray = [];
-const logFromRightArray = [];
+const streamFromLeftArray = [];
+const streamFromRightArray = [];
 const pointArray = [];
 const goldenPointArray = [];
 let bonusPoints = 0;
 
 createVehicle();
 createTruck();
-createLogsFromLeft();
-createLogsFromRight();
+createStreamsFromLeft();
+createStreamsFromRight();
 
-//create Logs
+//create Streams
 
-function createLogsFromLeft() {
+function createStreamsFromLeft() {
 	let x = 67;
-	const newLogFromLeft = new LogFromLeft(x);
-	const newLogFromLeft2 = new LogFromLeft(x + 8);
-	const newLogFromLeft3 = new LogFromLeft(x + 16);
-	const newLogFromLeft4 = new LogFromLeft(x + 24);
-	logFromLeftArray.push(
-		newLogFromLeft,
-		newLogFromLeft2,
-		newLogFromLeft3,
-		newLogFromLeft4
+	const newStreamFromLeft = new StreamFromLeft(x);
+	const newStreamFromLeft2 = new StreamFromLeft(x + 8);
+	const newStreamFromLeft3 = new StreamFromLeft(x + 16);
+	const newStreamFromLeft4 = new StreamFromLeft(x + 23.5);
+	streamFromLeftArray.push(
+		newStreamFromLeft,
+		newStreamFromLeft2,
+		newStreamFromLeft3,
+		newStreamFromLeft4
 	);
 }
 
-function createLogsFromRight() {
+function createStreamsFromRight() {
 	let x = 67;
-	const newLogFromRight = new LogFromRight(x + 4);
-	const newLogFromRight2 = new LogFromRight(x + 12);
-	const newLogFromRight3 = new LogFromRight(x + 20);
-	logFromRightArray.push(newLogFromRight, newLogFromRight2, newLogFromRight3);
+	const newStreamFromRight = new StreamFromRight(x + 4);
+	const newStreamFromRight2 = new StreamFromRight(x + 12);
+	const newStreamFromRight3 = new StreamFromRight(x + 20);
+	const newStreamFromRight4 = new StreamFromRight(x + 27.5);
+	streamFromRightArray.push(
+		newStreamFromRight,
+		newStreamFromRight2,
+		newStreamFromRight3,
+		newStreamFromRight4
+	);
 }
 
-setInterval(createLogsFromLeft, 500);
-setInterval(createLogsFromRight, 500);
+setInterval(createStreamsFromLeft, 500);
+setInterval(createStreamsFromRight, 500);
 
-//movement + disappearance of Logs + frog stucks to logs
+//movement + disappearance of Streams + frog stucks to streams
 setInterval(() => {
-	logFromLeftArray.forEach((logFromLeftInstance, i) => {
-		logFromLeftInstance.moveRight();
-		if (logFromLeftInstance.positionX > 100) {
-			logFromLeftInstance.newLogFromLeft.remove();
-			logFromLeftArray.splice(i, 1);
+	streamFromLeftArray.forEach((streamFromLeftInstance, i) => {
+		streamFromLeftInstance.moveRight();
+		if (streamFromLeftInstance.positionX > 100) {
+			streamFromLeftInstance.newStreamFromLeft.remove();
+			streamFromLeftArray.splice(i, 1);
 		}
 		if (
 			player.positionX <
-				logFromLeftInstance.positionX +
-					logFromLeftInstance.width -
+				streamFromLeftInstance.positionX +
+					streamFromLeftInstance.width -
 					player.width &&
 			player.positionX + player.width >
-				logFromLeftInstance.positionX + player.width / 2 &&
+				streamFromLeftInstance.positionX + player.width / 2 &&
 			player.positionY + player.height / 1.5 <
-				logFromLeftInstance.positionY + logFromLeftInstance.height &&
-			player.positionY + player.height / 1.5 > logFromLeftInstance.positionY
+				streamFromLeftInstance.positionY + streamFromLeftInstance.height &&
+			player.positionY + player.height / 1.5 > streamFromLeftInstance.positionY
 		) {
-			player.moveRightOnLog();
+			player.moveRightOnStream();
 		}
 	});
 }, 70);
 setInterval(() => {
-	logFromRightArray.forEach((logFromRightInstance, i) => {
-		logFromRightInstance.moveLeft();
-		if (logFromRightInstance.positionX < -30) {
-			logFromRightInstance.newLogFromRight.remove();
-			logFromRightArray.splice(i, 1);
+	streamFromRightArray.forEach((streamFromRightInstance, i) => {
+		streamFromRightInstance.moveLeft();
+		if (streamFromRightInstance.positionX < -30) {
+			streamFromRightInstance.newStreamFromRight.remove();
+			streamFromRightArray.splice(i, 1);
 		}
 		if (
 			player.positionX <
-				logFromRightInstance.positionX +
-					logFromRightInstance.width -
+				streamFromRightInstance.positionX +
+					streamFromRightInstance.width -
 					player.width &&
 			player.positionX + player.width >
-				logFromRightInstance.positionX + player.width / 2 &&
+				streamFromRightInstance.positionX + player.width / 2 &&
 			player.positionY + player.height / 1.5 <
-				logFromRightInstance.positionY + logFromRightInstance.height &&
-			player.positionY + player.height / 1.5 > logFromRightInstance.positionY
+				streamFromRightInstance.positionY + streamFromRightInstance.height &&
+			player.positionY + player.height / 1.5 > streamFromRightInstance.positionY
 		) {
-			player.moveLeftOnLog();
+			player.moveLeftOnStream();
 		}
 	});
 }, 40);

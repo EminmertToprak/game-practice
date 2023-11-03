@@ -45,6 +45,7 @@ body {
     width: 100px;
     height: 30px;
     font-family: 'Common Pixel', sans-serif;
+    z-index: 1;
 }
 
 .lilyPad {
@@ -109,15 +110,15 @@ body {
     position: absolute;
 }
 
-.logFromRight {
-    background-image: url("../images/log_alternative.png");
+.streamFromRight {
+    background-image: url("../images/stream_alternative.png");
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
 }
 
-.logFromLeft {
-    background-image: url("../images/log_alternative.png");
+.streamFromLeft {
+    background-image: url("../images/stream_alternative.png");
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
