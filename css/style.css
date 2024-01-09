@@ -19,13 +19,15 @@ body {
 #welcome_page {
     position: relative;
     flex: content;
+    margin: 0;
+
 }
 
 #welcome_frog {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 20%;
 }
 
 #welcome_page h1 {
