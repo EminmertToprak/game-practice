@@ -12,15 +12,16 @@ class Vehicle {
 
 	updateScaleX(num) {
 		this.newElement.style.transform = `scaleX(${num})`;
+		this.newElement.style.border = '1px red solid';
 	}
 
 	createDomElement() {
 		this.newElement = document.createElement('div');
 		this.newElement.classList.add(this.className);
-		this.newElement.style.width = this.width + 'vw';
-		this.newElement.style.height = this.height + 'vh';
-		this.newElement.style.left = this.positionX + 'vw';
-		this.newElement.style.bottom = this.positionY + 'vh';
+		this.newElement.style.width = this.width + 'px';
+		this.newElement.style.height = this.height + 'px';
+		this.newElement.style.left = this.positionX + 'px';
+		this.newElement.style.bottom = this.positionY + 'px';
 		this.updateScaleX();
 
 		const parentElm = document.getElementById('road');
@@ -28,24 +29,24 @@ class Vehicle {
 	}
 
 	moveRight() {
-		this.positionX++;
-		this.newElement.style.left = this.positionX + 'vw';
+		this.positionX = this.positionX + 2;
+		this.newElement.style.left = this.positionX + 'px';
 	}
 
 	moveLeft() {
-		this.positionX--;
-		this.newElement.style.left = this.positionX + 'vw';
+		this.positionX = this.positionX - 2;
+		this.newElement.style.left = this.positionX + 'px';
 	}
 }
 
 class Truck extends Vehicle {
 	constructor(positionX, positionY, side) {
-		super(positionX, positionY, side, 24, 8, 'Truck');
+		super(positionX, positionY, side, 240, 75, 'Truck');
 	}
 }
 
 class Car extends Vehicle {
 	constructor(positionX, positionY, side) {
-		super(positionX, positionY, side, 13, 6.2, 'Car');
+		super(positionX, positionY, side, 130, 62, 'Car');
 	}
 }

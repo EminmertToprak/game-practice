@@ -1,8 +1,8 @@
 class StreamFromLeft {
 	constructor(positionY) {
-		this.height = 4;
-		this.width = 100;
-		this.positionX = -5;
+		this.height = 40;
+		this.width = 1500;
+		this.positionX = -100;
 		this.positionY = positionY;
 		this.newStreamFromLeft = undefined;
 		this.createDomElement();
@@ -10,25 +10,25 @@ class StreamFromLeft {
 	createDomElement() {
 		this.newStreamFromLeft = document.createElement('div');
 		this.newStreamFromLeft.classList.add('streamFromLeft');
-		this.newStreamFromLeft.style.width = this.width + 'vw';
-		this.newStreamFromLeft.style.height = this.height + 'vh';
-		this.newStreamFromLeft.style.left = this.positionX + 'vw';
-		this.newStreamFromLeft.style.bottom = this.positionY + 'vh';
+		this.newStreamFromLeft.style.width = this.width + 'px';
+		this.newStreamFromLeft.style.height = this.height + 'px';
+		this.newStreamFromLeft.style.left = this.positionX + 'px';
+		this.newStreamFromLeft.style.bottom = this.positionY + 'px';
 
 		const parentElm = document.getElementById('river');
 		parentElm.appendChild(this.newStreamFromLeft);
 	}
 	moveRight() {
 		this.positionX++;
-		this.newStreamFromLeft.style.left = this.positionX + 'vw';
+		this.newStreamFromLeft.style.left = this.positionX + 'px';
 	}
 }
 
 class StreamFromRight {
 	constructor(positionY) {
-		this.height = 4;
-		this.width = 80;
-		this.positionX = 30;
+		this.height = 40;
+		this.width = 1500;
+		this.positionX = 100;
 		this.positionY = positionY;
 		this.newStreamFromRight = undefined;
 		this.createDomElement();
@@ -36,16 +36,16 @@ class StreamFromRight {
 	createDomElement() {
 		this.newStreamFromRight = document.createElement('div');
 		this.newStreamFromRight.classList.add('streamFromRight');
-		this.newStreamFromRight.style.width = this.width + 'vw';
-		this.newStreamFromRight.style.height = this.height + 'vh';
-		this.newStreamFromRight.style.left = this.positionX + 'vw';
-		this.newStreamFromRight.style.bottom = this.positionY + 'vh';
+		this.newStreamFromRight.style.width = this.width + 'px';
+		this.newStreamFromRight.style.height = this.height + 'px';
+		this.newStreamFromRight.style.left = this.positionX + 'px';
+		this.newStreamFromRight.style.bottom = this.positionY + 'px';
 
 		const parentElm = document.getElementById('river');
 		parentElm.appendChild(this.newStreamFromRight);
 	}
 	moveLeft() {
 		this.positionX--;
-		this.newStreamFromRight.style.left = this.positionX + 'vw';
+		this.newStreamFromRight.style.left = this.positionX + 'px';
 	}
 }

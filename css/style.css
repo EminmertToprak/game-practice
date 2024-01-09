@@ -1,11 +1,19 @@
 body {
     background-color: black;
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     flex: content;
     color: green;
     position: relative;
+}
+
+#board {
+    border: 3px outset greenyellow;
+    max-width: 800px;
+    max-height: 812px;
+    position: relative;
+    left: 30%;
+    overflow: hidden;
 }
 
 #welcome_page {
@@ -52,8 +60,8 @@ body {
     background-image: url("../images/lily_pad.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    width: 4vw;
-    height: 4vh;
+    width: 40px;
+    height: 40px;
 }
 
 #lilypads {
@@ -63,17 +71,17 @@ body {
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
-    gap: 10vw;
-    width: 100%;
+    gap: 100px;
+    width: 800px;
     top: 5%;
 }
 
 #river {
     background-image: url("../images/lake.png");
-    background-repeat: repeat-x;
+    background-repeat: repeat;
     background-size: 40%;
-    width: 100vw;
-    height: 33vh;
+    width: 100%;
+    height: 282px;
     flex: content;
 }
 
@@ -81,8 +89,8 @@ body {
     background-image: url("../images/road-1.png");
     background-repeat: no-repeat;
     background-size: contain;
-    width: 100vw;
-    height: 67vh;
+    width: 100%;
+    height: 533px;
     flex: content;
 }
 
@@ -100,6 +108,9 @@ body {
     position: center;
     background-repeat: no-repeat;
     position: absolute;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
 }
 
 .Car {
@@ -108,6 +119,8 @@ body {
     position: center;
     background-repeat: no-repeat;
     position: absolute;
+    margin: 0;
+    padding: 0;
 }
 
 .streamFromRight {
@@ -171,7 +184,7 @@ button a{
 }
 
 #game-over-image {
-    width: 40%;
+    width: 20%;
     margin-left: auto;
     margin-right: auto;
 }

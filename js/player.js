@@ -1,14 +1,15 @@
 class Player {
 	constructor(height, width) {
-		this.height = 3;
-		this.width = 3;
-		this.positionX = 50;
+		this.height = 30;
+		this.width = 30;
+		this.positionX = 385;
 		this.positionY = 0;
 		this.playerElement = document.getElementById('player');
-		this.playerElement.style.width = this.width + 'vw';
-		this.playerElement.style.height = this.height + 'vh';
-		this.playerElement.style.bottom = this.positionY + 'vh';
-		this.playerElement.style.left = this.positionX + 'vw';
+		this.playerElement.style.width = this.width + 'px';
+		this.playerElement.style.height = this.height + 'px';
+		this.playerElement.style.left = this.positionX + 'px';
+		this.playerElement.style.bottom = this.positionY + 'px';
+		this.playerElement.style.border = '1px blue solid';
 		this.updateScaleX();
 		this.updateScaleY();
 		this.standingEffect();
@@ -42,43 +43,43 @@ class Player {
 
 	moveLeft() {
 		if (this.positionX > 0) {
-			this.positionX -= 1;
-			this.playerElement.style.left = this.positionX + 'vw';
+			this.positionX -= 20;
+			this.playerElement.style.left = this.positionX + 'px';
 		}
 	}
 
 	moveRight() {
-		if (this.positionX < 97) {
-			this.positionX += 1;
-			this.playerElement.style.left = this.positionX + 'vw';
+		if (this.positionX < 800) {
+			this.positionX += 20;
+			this.playerElement.style.left = this.positionX + 'px';
 		}
 	}
 
 	moveUp() {
-		if (this.positionY < 94) {
-			this.positionY += 1;
-			this.playerElement.style.bottom = this.positionY + 'vh';
+		if (this.positionY < 800) {
+			this.positionY += 20;
+			this.playerElement.style.bottom = this.positionY + 'px';
 		}
 	}
 
 	moveDown() {
 		if (this.positionY > 0) {
-			this.positionY -= 1;
-			this.playerElement.style.bottom = this.positionY + 'vh';
+			this.positionY -= 20;
+			this.playerElement.style.bottom = this.positionY + 'px';
 		}
 	}
 
 	moveLeftOnStream() {
-		if (this.positionX < 97) {
-			this.positionX -= 0.2;
-			this.playerElement.style.left = this.positionX + 'vw';
+		if (this.positionX > 0) {
+			this.positionX -= 0.3;
+			this.playerElement.style.left = this.positionX + 'px';
 		}
 	}
 
 	moveRightOnStream() {
-		if (this.positionX < 97) {
-			this.positionX += 0.2;
-			this.playerElement.style.left = this.positionX + 'vw';
+		if (this.positionX < 800) {
+			this.positionX += 0.3;
+			this.playerElement.style.left = this.positionX + 'px';
 		}
 	}
 }

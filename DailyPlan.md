@@ -53,4 +53,6 @@
 ### Future:
 
 - [ ] Refactor code
+  - [ ] 25% margin to body from both sides?
+  - [ ] send streams to bottom of view?
 - [ ] Make objects (both player and hostiles) non-responsive (pixels?)

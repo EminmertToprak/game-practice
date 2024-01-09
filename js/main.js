@@ -15,13 +15,13 @@ createStreamsFromRight();
 //create Streams
 
 function createStreamsFromLeft() {
-	let x = 67;
-	const newStreamFromLeft = new StreamFromLeft(x);
-	const newStreamFromLeft2 = new StreamFromLeft(x + 8);
-	const newStreamFromLeft3 = new StreamFromLeft(x + 16);
-	const newStreamFromLeft4 = new StreamFromLeft(x + 23.5);
+	let x = 465;
+	// const newStreamFromLeft = new StreamFromLeft(x);
+	const newStreamFromLeft2 = new StreamFromLeft(x + 80);
+	const newStreamFromLeft3 = new StreamFromLeft(x + 160);
+	const newStreamFromLeft4 = new StreamFromLeft(x + 240);
 	streamFromLeftArray.push(
-		newStreamFromLeft,
+		// newStreamFromLeft,
 		newStreamFromLeft2,
 		newStreamFromLeft3,
 		newStreamFromLeft4
@@ -29,27 +29,27 @@ function createStreamsFromLeft() {
 }
 
 function createStreamsFromRight() {
-	let x = 67;
-	const newStreamFromRight = new StreamFromRight(x + 4);
-	const newStreamFromRight2 = new StreamFromRight(x + 12);
-	const newStreamFromRight3 = new StreamFromRight(x + 20);
-	const newStreamFromRight4 = new StreamFromRight(x + 27.5);
+	let x = 505;
+	const newStreamFromRight = new StreamFromRight(x + 80);
+	const newStreamFromRight2 = new StreamFromRight(x + 160);
+	const newStreamFromRight3 = new StreamFromRight(x + 240);
+	// const newStreamFromRight4 = new StreamFromRight(x + 27.5);
 	streamFromRightArray.push(
 		newStreamFromRight,
 		newStreamFromRight2,
-		newStreamFromRight3,
-		newStreamFromRight4
+		newStreamFromRight3
+		// newStreamFromRight4
 	);
 }
 
 setInterval(createStreamsFromLeft, 500);
-setInterval(createStreamsFromRight, 500);
+setInterval(createStreamsFromRight, 400);
 
 //movement + disappearance of Streams + frog stucks to streams
 setInterval(() => {
 	streamFromLeftArray.forEach((streamFromLeftInstance, i) => {
 		streamFromLeftInstance.moveRight();
-		if (streamFromLeftInstance.positionX > 100) {
+		if (streamFromLeftInstance.positionX > 1000) {
 			streamFromLeftInstance.newStreamFromLeft.remove();
 			streamFromLeftArray.splice(i, 1);
 		}
@@ -67,11 +67,11 @@ setInterval(() => {
 			player.moveRightOnStream();
 		}
 	});
-}, 70);
+}, 4);
 setInterval(() => {
 	streamFromRightArray.forEach((streamFromRightInstance, i) => {
 		streamFromRightInstance.moveLeft();
-		if (streamFromRightInstance.positionX < -40) {
+		if (streamFromRightInstance.positionX < -120) {
 			streamFromRightInstance.newStreamFromRight.remove();
 			streamFromRightArray.splice(i, 1);
 		}
@@ -89,23 +89,19 @@ setInterval(() => {
 			player.moveLeftOnStream();
 		}
 	});
-}, 40);
+}, 4);
 
 //create Cars
 function createVehicle() {
-	let newTruckRandomer = Math.floor(Math.random() * (11 - 1) + 1);
-	let newTruckRandomer2 = Math.floor(Math.random() * (59 - 47) + 47);
-	let newCarRandomer = Math.floor(Math.random() * (46 - 35) + 35);
-	let newCarRandomer2 = Math.floor(Math.random() * (33 - 12) + 12);
-	const newTruck = new Truck(-24, 5, -1);
-	const newTruck2 = new Truck(124, 54, 1);
-	const newCar = new Car(100, 37, 1);
-	const newCar2 = new Car(-15, 20, -1);
+	const newTruck = new Truck(-240, 45, -1);
+	const newTruck2 = new Truck(800, 420, 1);
+	const newCar = new Car(800, 300, 1);
+	const newCar2 = new Car(-130, 170, -1);
 	TruckArray.push(newTruck, newTruck2);
 	CarArray.push(newCar, newCar2);
 }
 
-setInterval(createVehicle, 2000);
+setInterval(createVehicle, 3000);
 //movement + disappearance of Trucks + game over
 function createTruck() {
 	TruckArray.forEach((TruckInstance, i) => {
@@ -115,11 +111,14 @@ function createTruck() {
 			TruckInstance.updateScaleX(-1);
 			TruckInstance.moveLeft();
 		}
-		//remove Trucks
-		if (TruckInstance.positionX === 140 || TruckInstance.positionX === -140) {
+
+		// remove Trucks
+		if (TruckInstance.positionX === 800 || TruckInstance.positionX === -260) {
 			TruckInstance.newElement.remove();
 			TruckArray.splice(i, 1);
 		}
+
+		// collusion player + truck
 		if (
 			player.positionX < TruckInstance.positionX + TruckInstance.width &&
 			player.positionX + player.width > TruckInstance.positionX &&
@@ -131,8 +130,6 @@ function createTruck() {
 	});
 }
 
-setInterval(createTruck, 15);
-
 function createCar() {
 	CarArray.forEach((CarInstance, i) => {
 		if (CarInstance.spawnSide === -1) {
@@ -141,11 +138,14 @@ function createCar() {
 		} else if (CarInstance.spawnSide === 1) {
 			CarInstance.moveLeft();
 		}
-		//remove Cars Left
-		if (CarInstance.positionX === 140 || CarInstance.positionX === -140) {
+
+		// remove Cars Left
+		if (CarInstance.positionX === 800 || CarInstance.positionX === -240) {
 			CarInstance.newElement.remove();
 			CarArray.splice(i, 1);
 		}
+
+		// collusion player + car
 		if (
 			player.positionX < CarInstance.positionX + CarInstance.width &&
 			player.positionX + player.width > CarInstance.positionX &&
@@ -157,13 +157,14 @@ function createCar() {
 	});
 }
 
-setInterval(createCar, 10);
+setInterval(createTruck, 1);
+setInterval(createCar, 1);
 
 //create points
 setInterval(() => {
 	const newPoint = new Point();
 	pointArray.push(newPoint);
-}, 3_100);
+}, 3000);
 
 //appearance + disappearance of points + win condition
 setInterval(() => {
@@ -171,9 +172,9 @@ setInterval(() => {
 		pointInstance.moveRandom();
 		if (
 			pointInstance.positionX < 0 - pointInstance.width ||
-			pointInstance.positionX > 100 + pointInstance.width ||
+			pointInstance.positionX > 800 + pointInstance.width ||
 			pointInstance.positionY < 0 - pointInstance.height ||
-			pointInstance.positionY > 100 + pointInstance.height
+			pointInstance.positionY > 800 + pointInstance.height
 		) {
 			pointInstance.newPoint.remove();
 			pointArray.splice(i, 1);
@@ -199,6 +200,7 @@ setInterval(() => {
 	}
 }, 100);
 
+// character movement
 document.addEventListener('keydown', (e) => {
 	switch (e.code) {
 		case 'ArrowLeft':
@@ -236,7 +238,7 @@ document.addEventListener('keydown', (e) => {
 
 //goldenpoint
 setInterval(() => {
-	let positionArray = [6.5, 27.5, 48, 68.7, 89.4];
+	let positionArray = [35, 205, 380, 555, 725];
 	let position =
 		positionArray[Math.floor(Math.random() * positionArray.length)];
 
@@ -249,10 +251,12 @@ setInterval(() => {
 		}
 	});
 }, 10000);
+
+//river left + right deadly rule
 setInterval(() => {
-	if ((player.positionX < 1) & (player.positionY > 63)) {
+	if ((player.positionX < 0) & (player.positionY > 530)) {
 		location.href = './game-over-page.html';
-	} else if ((player.positionX > 96) & (player.positionY > 63)) {
+	} else if ((player.positionY > 530) & (player.positionX > 785)) {
 		location.href = './game-over-page.html';
 	}
 	goldenPointArray.forEach((goldenPointInstance, i) => {
