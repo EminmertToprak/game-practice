@@ -12,7 +12,6 @@ class Vehicle {
 
 	updateScaleX(num) {
 		this.newElement.style.transform = `scaleX(${num})`;
-		this.newElement.style.border = '1px red solid';
 	}
 
 	createDomElement() {
@@ -41,7 +40,7 @@ class Vehicle {
 
 class Truck extends Vehicle {
 	constructor(positionX, positionY, side) {
-		super(positionX, positionY, side, 240, 75, 'Truck');
+		super(positionX, positionY, side, 240, 80, 'Truck');
 	}
 }
 

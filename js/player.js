@@ -9,7 +9,6 @@ class Player {
 		this.playerElement.style.height = this.height + 'px';
 		this.playerElement.style.left = this.positionX + 'px';
 		this.playerElement.style.bottom = this.positionY + 'px';
-		this.playerElement.style.border = '1px blue solid';
 		this.updateScaleX();
 		this.updateScaleY();
 		this.standingEffect();
